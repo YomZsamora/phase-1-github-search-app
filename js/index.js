@@ -29,5 +29,26 @@ let createGitUserCardElement = user => {
                            + `<h2>${user.login}</h2>`
                            + `<a class="fs11" href="${user.html_url}" target="_blank">Go to Github Profile</a><br>`
                            + `<button class="submit-btn fs11">View ${user.login}'s Repos</button>`
-   
+   gitUserCard.querySelector(".submit-btn").addEventListener('click', () => {
+      fetchRepositories(user)
+   })
+}
+
+// Renders repo details for each retrieved toy from the response
+let fetchRepositories = username => {
+   fetch(`https://api.github.com/users/${username.login}/repos`)
+   .then(resp => resp.json())
+   .then(repos => { renderRepositoryDetails(repos) })
+   .catch(error => { alert("Kuna Bug Mahali!") });
+}
+
+let renderRepositoryDetails = repos => {
+   repos.forEach(repo => createReposCardElement(repo) )
+}
+
+let createReposCardElement = repo => {
+   const repositoryCard = document.createElement("div");
+   document.querySelector("#repos-list").appendChild(repositoryCard);
+   repositoryCard.innerHTML = `<h2>${repo.name}</h2>`
+                              + `<p class="fs14">${repo.description}</p>`
 }

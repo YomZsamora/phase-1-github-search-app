@@ -17,10 +17,11 @@ let searchGitHubUser = (e) => {
 
 // Renders GitHub user details for each retrieved toy from the response
 let renderUserDetails = users => {
-   users.forEach(user => { createGitUserCard(user) })
+   users.forEach(user => { createGitUserCardElement(user) })
 }
 
-let createGitUserCard = user => {
+// Creates the card and it's child elements as well as interpolates the specific user's details 
+let createGitUserCardElement = user => {
    const gitUserCard = document.createElement("div");
    gitUserCard.className = "user-card";
    document.querySelector("#user-list").appendChild(gitUserCard);

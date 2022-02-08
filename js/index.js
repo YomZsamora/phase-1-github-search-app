@@ -15,6 +15,7 @@ let searchGitHubUser = (e) => {
    
 }
 
+// Renders GitHub user details for each retrieved toy from the response
 let renderUserDetails = users => {
    users.forEach(user => { createGitUserCard(user) })
 }

@@ -56,3 +56,13 @@ ul {
 body {
 	font-family: Nunito;
 }
+
+.margin-none {
+	margin: 0;;
+}
+
+.repo-card {
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-bottom: 1px solid #eee;
+}

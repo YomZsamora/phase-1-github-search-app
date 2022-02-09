@@ -34,7 +34,7 @@ let createGitUserCardElement = user => {
    })
 }
 
-// Renders repo details for each retrieved toy from the response
+// Fetches the toys details / info using the url provided.
 let fetchRepositories = username => {
    fetch(`https://api.github.com/users/${username.login}/repos`)
    .then(resp => resp.json())
@@ -42,13 +42,16 @@ let fetchRepositories = username => {
    .catch(error => { alert("Kuna Bug Mahali!") });
 }
 
+// Renders repo details for each retrieved toy from the response
 let renderRepositoryDetails = repos => {
    repos.forEach(repo => createReposCardElement(repo) )
 }
 
+// Creates the card and it's child elements as well as interpolates the specific repo's details 
 let createReposCardElement = repo => {
    const repositoryCard = document.createElement("div");
+   repositoryCard.className = "repo-card"
    document.querySelector("#repos-list").appendChild(repositoryCard);
-   repositoryCard.innerHTML = `<h2>${repo.name}</h2>`
-                              + `<p class="fs14">${repo.description}</p>`
+   repositoryCard.innerHTML = `<h2 class="margin-none">${repo.name}</h2>`
+                              + `<p class="fs14 margin-none">${repo.description}</p>`
 }
